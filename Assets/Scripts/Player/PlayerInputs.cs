@@ -16,9 +16,9 @@ namespace KingsAndPigs
         protected InputAction _playerAttack;
         protected InputAction _playerJump;
 
-        protected void Awake() => _playerInputActions = new PlayerInputActions();
+        private void Awake() => _playerInputActions = new PlayerInputActions();
 
-        protected void OnEnable()
+        private void OnEnable()
         {
             _playerMove = _playerInputActions.Player.Move;
             _playerJump = _playerInputActions.Player.Jump;
@@ -35,7 +35,7 @@ namespace KingsAndPigs
             _playerInteract.performed += PlayerInteraction;
         }
 
-        protected void OnDisable()
+        private void OnDisable()
         {
             _playerMove.Disable();
             _playerAttack.Disable();

@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 210501741}
   - component: {fileID: 210501740}
   - component: {fileID: 210501742}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,6 +329,7 @@ GameObject:
   - component: {fileID: 696395657}
   - component: {fileID: 696395658}
   - component: {fileID: 696395659}
+  - component: {fileID: 696395660}
   m_Layer: 0
   m_Name: PlayerHitbox
   m_TagString: Player
@@ -452,6 +453,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc90a22667b7a14b9ce5ee6a2915a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  _groundLength: 0.2
+  _colliderOffset: {x: 0.32, y: 0, z: 0}
+--- !u!114 &696395660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696395653}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16b5228cf6fd7f4b927c561201cc236, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerController: {fileID: 0}
+  _attackAnimDuration: 0.2
+  _landAnimDuration: 0.1
 --- !u!1 &881751139
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +491,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &881751140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,7 +597,7 @@ GameObject:
   - component: {fileID: 1811552242}
   - component: {fileID: 1811552241}
   - component: {fileID: 1811552244}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
