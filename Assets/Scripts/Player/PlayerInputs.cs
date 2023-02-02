@@ -1,20 +1,22 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 namespace KingsAndPigs
 {
     public class PlayerInputs : MonoBehaviour
     {
-        protected PlayerInputActions _playerInputActions;
+        private PlayerInputActions _playerInputActions;
 
-        protected bool _isJumping = false;
-        protected bool _isAttacking = false;
-        protected bool _isInteracting = false;
+        public static InputAction _playerMove;
+        private InputAction _playerInteract;
+        private InputAction _playerAttack;
+        private InputAction _playerJump;
 
-        protected InputAction _playerMove;
-        protected InputAction _playerInteract;
-        protected InputAction _playerAttack;
-        protected InputAction _playerJump;
+        [SerializeField] private UnityEvent _moveEvent;
+        [SerializeField] private UnityEvent _jumpEvent;
+        [SerializeField] private UnityEvent _attackEvent;
+        [SerializeField] private UnityEvent _interactEvent;
 
         private void Awake() => _playerInputActions = new PlayerInputActions();
 
@@ -30,6 +32,7 @@ namespace KingsAndPigs
             _playerAttack.Enable();
             _playerInteract.Enable();
 
+            _playerMove.performed += PlayerMove;
             _playerJump.performed += PlayerJump;
             _playerAttack.performed += PlayerAttack;
             _playerInteract.performed += PlayerInteraction;
@@ -43,14 +46,12 @@ namespace KingsAndPigs
             _playerInteract.Disable();
         }
 
-        private void PlayerAttack(InputAction.CallbackContext context) => _isAttacking = true;
+        private void PlayerMove(InputAction.CallbackContext context) => _moveEvent.Invoke();
+        
+        private void PlayerAttack(InputAction.CallbackContext context) => _attackEvent.Invoke();
 
-        private void PlayerJump(InputAction.CallbackContext context)
-        {
-            Debug.Log("Player jumped");
-            _isJumping = true;
-        }
+        private void PlayerJump(InputAction.CallbackContext context) => _jumpEvent.Invoke();
 
-        private void PlayerInteraction(InputAction.CallbackContext context) => _isInteracting = true;
+        private void PlayerInteraction(InputAction.CallbackContext context) => _interactEvent.Invoke();
     }
 }
