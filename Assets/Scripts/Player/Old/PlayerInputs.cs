@@ -6,7 +6,7 @@ namespace KingsAndPigs
 {
     public class PlayerInputs : MonoBehaviour
     {
-        private PlayerInputActions _playerInputActions;
+        public static PlayerInputActions _playerInputActions;
 
         public static InputAction _playerMove;
         private InputAction _playerInteract;
@@ -18,7 +18,7 @@ namespace KingsAndPigs
         [SerializeField] private UnityEvent _attackEvent;
         [SerializeField] private UnityEvent _interactEvent;
 
-        private void Awake() => _playerInputActions = new PlayerInputActions();
+        public void Awake() => _playerInputActions = new PlayerInputActions();
 
         private void OnEnable()
         {
@@ -41,17 +41,15 @@ namespace KingsAndPigs
         private void OnDisable()
         {
             _playerMove.Disable();
-            _playerAttack.Disable();
+            _playerJump.Disable();
             _playerAttack.Disable();
             _playerInteract.Disable();
         }
 
         private void PlayerMove(InputAction.CallbackContext context) => _moveEvent.Invoke();
+        private void PlayerJump(InputAction.CallbackContext context) => _jumpEvent.Invoke();
         
         private void PlayerAttack(InputAction.CallbackContext context) => _attackEvent.Invoke();
-
-        private void PlayerJump(InputAction.CallbackContext context) => _jumpEvent.Invoke();
-
         private void PlayerInteraction(InputAction.CallbackContext context) => _interactEvent.Invoke();
     }
 }

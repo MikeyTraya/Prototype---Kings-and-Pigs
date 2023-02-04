@@ -11,7 +11,6 @@ namespace KingsAndPigs
 
         private static readonly int Attack = Animator.StringToHash("Attack");
         private static readonly int Fall = Animator.StringToHash("Fall");
-//        private static readonly int Land = Animator.StringToHash("Land");
         private static readonly int Jump = Animator.StringToHash("Jump");
         private static readonly int Run = Animator.StringToHash("Run");
         private static readonly int Idle = Animator.StringToHash("Idle");
@@ -41,10 +40,10 @@ namespace KingsAndPigs
             if (Time.time < _lockedTill) return _currentState;
 
             // Priorities
-            if (PlayerController.isAttacking) return LockState(Attack, _attackAnimDuration);
-            if (PlayerController.isJumping) return Jump;
+            if (SimplePlayerController.isAttacking) return LockState(Attack, _attackAnimDuration);
+            if (SimplePlayerController.isLongJump || SimplePlayerController.isShortJump) return Jump;
 
-            if (PlayerController.isGrounded) return PlayerController.MoveDirection.x == 0 ? Idle : Run;
+            if (SimplePlayerController.isGrounded) return SimplePlayerController.MoveDirection.x == 0 ? Idle : Run;
 
             return Jump;
 

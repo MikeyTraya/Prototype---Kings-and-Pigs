@@ -249,7 +249,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &360231213
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -436,9 +436,8 @@ GameObject:
   - component: {fileID: 696395654}
   - component: {fileID: 696395656}
   - component: {fileID: 696395657}
-  - component: {fileID: 696395658}
-  - component: {fileID: 696395659}
   - component: {fileID: 696395660}
+  - component: {fileID: 696395661}
   m_Layer: 0
   m_Name: PlayerHitbox
   m_TagString: Player
@@ -521,7 +520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: b379e91b32a9aa54392f5df2fba14f22, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -532,125 +531,108 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 696395661}
+        m_TargetAssemblyTypeName: KingsAndPigs.SimplePlayerController, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 711391d7-5167-497e-b408-a37053daa735
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 46fbeb3d-499b-494a-90b9-7dad49746482
+    m_ActionName: Player/Look[/Mouse/delta,/Pen/delta]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 696395661}
+        m_TargetAssemblyTypeName: KingsAndPigs.SimplePlayerController, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5dbaac94-f0f3-4ef7-8093-9c686c282b50
+    m_ActionName: Player/Fire[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c2c7be82-3d54-45f6-be71-c4c3236f371e
+    m_ActionName: Player/Interact[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 696395661}
+        m_TargetAssemblyTypeName: KingsAndPigs.SimplePlayerController, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 84459674-ef5a-4337-bd27-438d136c8e2a
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4cd8ae68-97a8-4cb7-a53e-2dacde3e3a1a
+    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e4db9b33-207c-4217-91f0-c9710602d6d9
+    m_ActionName: UI/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: abf11f47-b887-4c40-9f67-328ca295e789
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8887a722-4098-4efd-9dbc-6aa8f6d09a3e
+    m_ActionName: UI/Point[/Mouse/position,/Pen/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0d27e33e-6afc-4155-8635-84025bcf1bba
+    m_ActionName: UI/Click[/Mouse/leftButton,/Pen/tip]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f8e0aa2e-07b7-45a2-ad01-dda861fb0e06
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 54519f18-3103-4344-bb8b-4fe0b4ac6212
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 99a09a79-8ecd-4580-93b6-0cd9504f88b6
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4cad9357-972b-48b2-badb-48947baf0844
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a30a1177-76c4-4a39-b970-664f6c3b2987
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &696395658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 696395653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c665b9de8faf8747b230a9aa2306db2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 696395659}
-        m_TargetAssemblyTypeName: KingsAndPigs.PlayerController, Assembly-CSharp
-        m_MethodName: Moving
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _jumpEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 696395659}
-        m_TargetAssemblyTypeName: KingsAndPigs.PlayerController, Assembly-CSharp
-        m_MethodName: Jump
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 696395659}
-        m_TargetAssemblyTypeName: KingsAndPigs.PlayerController, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _attackEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 696395659}
-        m_TargetAssemblyTypeName: KingsAndPigs.PlayerController, Assembly-CSharp
-        m_MethodName: Attack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 696395659}
-        m_TargetAssemblyTypeName: KingsAndPigs.PlayerController, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _interactEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 696395659}
-        m_TargetAssemblyTypeName: KingsAndPigs.PlayerController, Assembly-CSharp
-        m_MethodName: Interact
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &696395659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 696395653}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dc90a22667b7a14b9ce5ee6a2915a81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  _groundLength: 0.4
-  _colliderOffset: {x: 0.32, y: 0, z: 0}
 --- !u!114 &696395660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,6 +646,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackAnimDuration: 0.2
+--- !u!114 &696395661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696395653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d8436d7237a8a441907abdb3dac20da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _jumpForce: 7
+  _linearDrag: 4
+  _fallMultiplier: 3
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  _groundLength: 0.3
+  _colliderOffset: {x: 0.32, y: 0, z: 0}
 --- !u!1 &881751139
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,7 +795,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1490415796
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -988,8 +990,8 @@ Transform:
   m_Father: {fileID: 696395655}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &1811552244
-CapsuleCollider2D:
+--- !u!61 &1811552244
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1002,5 +1004,15 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.09542313}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.4, y: 0.3}
+    oldSize: {x: 0.78, y: 0.58}
+    newSize: {x: 0.78, y: 0.58}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
   m_Size: {x: 0.16, y: 0.26}
-  m_Direction: 0
+  m_EdgeRadius: 0
