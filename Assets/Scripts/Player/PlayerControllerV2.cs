@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace KingsAndPigs
 {
-    public class SimplePlayerController : MonoBehaviour
+    public class PlayerControllerV2 : MonoBehaviour
     {
         private Rigidbody2D _rigidbody2D;
 
@@ -24,7 +24,9 @@ namespace KingsAndPigs
         [SerializeField] private float _groundLength;
         [SerializeField] private Vector3 _colliderOffset;
         private readonly float _gravity = 1f;
-        private bool isFacingRight = true;
+        private bool _isFacingRight = true;
+        private float _cayoteTime = 0.2f;
+        private float _cayoteTimeCounter;
 
         // Attacking Mechanics
         public static bool isAttacking { get; private set; } = false;
@@ -36,15 +38,21 @@ namespace KingsAndPigs
 
         private void Update()
         {
+            // Ground checking
             isGrounded = GroundCheck();
-            if (!isFacingRight && MoveDirection.x > 0f)
+            
+            // Flip Player
+            if (!_isFacingRight && MoveDirection.x > 0f)
             {
                 FlipPlayer();
             }
-            else if (isFacingRight && MoveDirection.x < 0f)
+            else if (_isFacingRight && MoveDirection.x < 0f)
             {
                 FlipPlayer();
             }
+
+            // Cayote Time
+            _cayoteTimeCounter = (isGrounded) ? _cayoteTime : _cayoteTimeCounter -= Time.deltaTime;
         }
 
         private void FixedUpdate()
@@ -56,7 +64,7 @@ namespace KingsAndPigs
 
         private void FlipPlayer()
         {
-            isFacingRight = !isFacingRight;
+            _isFacingRight = !_isFacingRight;
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
@@ -74,26 +82,28 @@ namespace KingsAndPigs
 
         public void Jump(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            // context returns a bool
+            if (context.performed && _cayoteTimeCounter > 0f)
             {
                 isLongJump = true;
             }
-
-            if (context.canceled && _rigidbody2D.velocity.y > 0f)
+            
+            if (context.canceled && _rigidbody2D.velocity.y > 0f && _cayoteTimeCounter > 0f)
             {
                 isShortJump = true;
+                _cayoteTimeCounter = 0f;
             }
         }
 
         private void JumpCheck()
         {
-            if (isLongJump && isGrounded)
+            if (isLongJump)
             {
                 _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, _jumpForce);
                 isLongJump = false;
             }
 
-            if (isShortJump && !isLongJump)
+            if (isShortJump)
             {
                 _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, (_jumpForce / 2));
                 isShortJump = false;
@@ -133,6 +143,13 @@ namespace KingsAndPigs
                     _rigidbody2D.gravityScale = _gravity * (_fallMultiplier / 2);
                 }
             }
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(transform.position + _colliderOffset, transform.position + _colliderOffset + Vector3.down * _groundLength);
+            Gizmos.DrawLine(transform.position - _colliderOffset, transform.position - _colliderOffset + Vector3.down * _groundLength);
         }
     }
 }

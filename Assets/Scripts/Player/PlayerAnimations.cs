@@ -10,6 +10,7 @@ namespace KingsAndPigs
         private int _currentState;
 
         private static readonly int Attack = Animator.StringToHash("Attack");
+        private static readonly int Damaged = Animator.StringToHash("Hurt");
         private static readonly int Fall = Animator.StringToHash("Fall");
         private static readonly int Jump = Animator.StringToHash("Jump");
         private static readonly int Run = Animator.StringToHash("Run");
@@ -17,7 +18,8 @@ namespace KingsAndPigs
         #endregion
         private Animator _animator;
 
-        [SerializeField] private float _attackAnimDuration = 0.2f;
+        [SerializeField] private float _attackAnimDuration = 0f;
+        [SerializeField] private float _damagedAnimDuration = 0f;
         private float _lockedTill = 0;
 
         void Start()
@@ -40,10 +42,11 @@ namespace KingsAndPigs
             if (Time.time < _lockedTill) return _currentState;
 
             // Priorities
-            if (SimplePlayerController.isAttacking) return LockState(Attack, _attackAnimDuration);
-            if (SimplePlayerController.isLongJump || SimplePlayerController.isShortJump) return Jump;
+            if (ContinuesDamage.IsDamaged) return LockState(Damaged, _damagedAnimDuration);
+            if (PlayerControllerV2.isAttacking) return LockState(Attack, _attackAnimDuration);
+            if (PlayerControllerV2.isLongJump || PlayerControllerV2.isShortJump) return Jump;
 
-            if (SimplePlayerController.isGrounded) return SimplePlayerController.MoveDirection.x == 0 ? Idle : Run;
+            if (PlayerControllerV2.isGrounded) return PlayerControllerV2.MoveDirection.x == 0 ? Idle : Run;
 
             return Jump;
 
